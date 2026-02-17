@@ -13,18 +13,23 @@
             font-family: Arial, Helvetica, sans-serif;
         }
 
+        header{
+            background-color: blueviolet;
+            padding: 20px;
+        }
+
         .view{
             font-size: 40px;
             text-align: center;
             font-weight: bold;
-            color: blueviolet;
-            margin-top: 40px;
+            color: rgb(255, 255, 255);
+            
         }
 
         .pro{
             text-align: center;
-            color: blueviolet;
-            font-size: 30px;
+            color: rgb(255, 255, 255);
+            font-size: 25px;
         }
 
         .projects{
@@ -35,7 +40,14 @@
             flex-wrap: wrap; /* 🔑 makes it responsive */
         }
         footer{
-           text-align: center;
+           flex-wrap: wrap;
+           background-color: blueviolet;
+           padding-bottom: 20px;
+        }
+        footer p{
+            color: white;
+            text-align: center;
+            font-size: medium;
         }
 
         .item{
@@ -76,16 +88,69 @@
                 gap: 20px;
             }
         }
+
+        form{
+            display: inline-block;
+            padding: 40px 20px;
+            width: 100%;
+            max-width: 500px
+            
+        }
+        textarea{
+    height: 80px;
+}
+input,
+textarea{
+    color: black;
+    width: 90%;
+    border-radius: 5px;
+    background-color: white;
+    border: 1px solid rgb(0, 0, 0);
+    padding: 10px;
+    margin-bottom: 15px;
+}
+h3{
+    color: white;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    footer{
+         max-width: 100%;
+         justify-content: center;
+         width: 100%;
+    }
+
+    form{
+        max-width: 100%;
+        width: 85%;
+    }
+}
+.bnt{
+    background-color: white;
+    padding: 10px;
+    border: 2px solid black;
+    color: blueviolet;
+    border-radius: 4px;
+    width: 100px;
+    transition: 0.3s;
+}
+.bnt:hover{
+    background-color: black;
+    color: blueviolet;
+
+}
     </style>
 </head>
 
 <body>
-
-    <h1 class="view"> My work Done</h1>
-    <p class="pro">Projects</p>
+  <header>
+    <h1 class="view">TAIWO's PROJECTS</h1>
+    <p class="pro">work done</p>
+  </header>
+   
 
     <div class="projects">
-
         <div class="item">
             <p>Project 1</p>
             <a href="calc.html">
@@ -111,8 +176,20 @@
         </div>
     </div>
 
+
     <footer>
-        <p>&copy; Taiwo | 2025</p>
+    <form>
+        <h3>Tell us your Project</h3>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Name">
+
+        <label for="Message">Message</label>
+        <textarea placeholder="Your Project"></textarea>
+
+        <button class="bnt">Submit</button>
+    </form>
+
+        <p>&copy; Taiwo | Work Done| 2025</p>
     </footer>
 
 </body>

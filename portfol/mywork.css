@@ -377,3 +377,11 @@ h4{
       color: #0508d0;
       transform: scale(1.07);
     }
+
+    @media (max-width: 768px) {
+      .goods{
+        width: 80%;
+        justify-content: space-between;
+        gap: 20px;
+      }
+    }

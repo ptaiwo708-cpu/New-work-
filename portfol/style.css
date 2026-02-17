@@ -27,9 +27,11 @@ header{
     padding: 0 20px;
 }
 .view:hover{
-    background-color: blueviolet;
-    padding: 7px;
-    border-radius: 8px;
+    background-color: rgb(255, 255, 255);
+    padding: 5px;
+    border-radius: 3px;
+    color: blueviolet;
+    font-size: small;
 }
 .hamburger {
     display: none;
@@ -163,12 +165,12 @@ nav{
 
 nav a{
     text-decoration: none;
-    color: blueviolet;
+    color: rgb(174, 91, 252);
     border-radius: 10px;
-    font-weight: bold;
+    font-weight: 500;
     font-size: large;
     margin: 10px;
-    transition: 0.3s;
+    transition: 0.5s;
 }
 
 nav a:hover{
@@ -466,11 +468,15 @@ h4{
 
         .taye{
             margin-top: 20px;
-            width: 250px;
+            width: 200px;
+            height: auto;
+            margin-right: 50px;
+            border: 1px solid blueviolet;
         }
 
-        h1{
-            font-size: 22px;
+        h2{
+            font-size: 20px;
+            text-align: center;
         }
 
         p{
@@ -557,3 +563,4 @@ h4{
     .report-card:hover h4{
       color: #ffffff;
     }
+    
