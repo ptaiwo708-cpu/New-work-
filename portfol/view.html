@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+
+    <style>
+        body{
+            background-color: #fff;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .view{
+            font-size: 40px;
+            text-align: center;
+            font-weight: bold;
+            color: blueviolet;
+            margin-top: 40px;
+        }
+
+        .pro{
+            text-align: center;
+            color: blueviolet;
+            font-size: 30px;
+        }
+
+        .projects{
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 40px 20px;
+            flex-wrap: wrap; /* 🔑 makes it responsive */
+        }
+        footer{
+           text-align: center;
+        }
+
+        .item{
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 6px 15px 8px rgb(221, 185, 255);
+            padding: 20px;
+            max-width: 320px;
+            width: 100%;
+            text-align: center;
+            gap: 40px;
+        }
+
+        .item a img{
+            width: 100%;
+            height: 70%;
+            border-radius: 10px;
+        }
+
+        .item p{
+            font-size: 15px;
+        }
+
+        /* 📱 Mobile devices */
+        @media (max-width: 600px){
+            .view{
+                font-size: 28px;
+            }
+
+            .pro{
+                font-size: 22px;
+            }
+        }
+
+        /* 📱 Tablet devices */
+        @media (max-width: 900px){
+            .projects{
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 class="view"> My work Done</h1>
+    <p class="pro">Projects</p>
+
+    <div class="projects">
+
+        <div class="item">
+            <p>Project 1</p>
+            <a href="calc.html">
+                <img src="my image/calc.jpeg" alt="calculator">
+            </a>
+            <p>A simple Scheduling calendar site</p>
+        </div>
+
+        <div class="item">
+            <p>Project 2</p>
+            <a href="rest.html">
+                <img src="my image/rest.jpeg" alt="restaurant">
+            </a>
+            <p>A site i built for a restaurant</p>
+        </div>
+
+            <div class="item">
+            <p>Project 3</p>
+            <a href="mywork.html">
+                <img src="my image/work.png" alt="restaurant">
+            </a>
+            <p>A website I build For a company Using HTML</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; Taiwo | 2025</p>
+    </footer>
+
+</body>
+</html>

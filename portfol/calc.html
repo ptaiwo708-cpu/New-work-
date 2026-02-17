@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calendar and Scheduling</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .calendar-container {
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            grid-gap: 5px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .calendar .day {
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .calendar .day:hover {
+            background-color: #f0f0f0;
+        }
+
+        .calendar .day.selected {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .calendar .day.event {
+            background-color: #FFD700;
+        }
+
+        .add-event {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .add-event input,
+        .add-event button {
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+        }
+
+        .add-event button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+        }
+
+        .add-event button:hover {
+            background-color: #45a049;
+        }
+
+        .events {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+
+        .event-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .event-list li {
+            background-color: #e8f5e9;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="calendar-container">
+        <h2>Simple Calendar</h2>
+        
+        <!-- Calendar -->
+        <div id="calendar" class="calendar"></div>
+
+        <!-- Add Event Form -->
+        <div class="add-event">
+            <input type="text" id="eventTitle" placeholder="Event Title" />
+            <button id="addEventButton">Add Event</button>
+        </div>
+
+        <!-- Scheduled Events List -->
+        <div class="events">
+            <h3>Scheduled Events</h3>
+            <ul id="eventList" class="event-list"></ul>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let selectedDate = null;
+        let events = JSON.parse(localStorage.getItem("events")) || {};
+
+        // Get the current date
+        const currentDate = new Date();
+        const currentMonth = currentDate.getMonth();
+        const currentYear = currentDate.getFullYear();
+
+        // Display calendar for the current month
+        function displayCalendar() {
+            const firstDayOfMonth = new Date(currentYear, currentMonth, 1);
+            const lastDayOfMonth = new Date(currentYear, currentMonth + 1, 0);
+            const totalDays = lastDayOfMonth.getDate();
+            const startingDay = firstDayOfMonth.getDay();
+            
+            let calendarHTML = '';
+            
+            // Empty days before the first day of the month
+            for (let i = 0; i < startingDay; i++) {
+                calendarHTML += '<div class="day"></div>';
+            }
+
+            // Days of the month
+            for (let day = 1; day <= totalDays; day++) {
+                const dayDate = new Date(currentYear, currentMonth, day);
+                const dayString = dayDate.toISOString().split('T')[0]; // ISO format
+
+                const isEvent = events[dayString] ? 'event' : '';
+                calendarHTML += `<div class="day ${isEvent}" data-date="${dayString}">${day}</div>`;
+            }
+
+            document.getElementById('calendar').innerHTML = calendarHTML;
+
+            // Add event listeners to each day
+            document.querySelectorAll('.calendar .day').forEach(day => {
+                day.addEventListener('click', () => {
+                    const dayDate = day.getAttribute('data-date');
+                    if (dayDate) {
+                        selectedDate = dayDate;
+                        loadEventsForSelectedDate();
+                    }
+                });
+            });
+        }
+
+        // Load events for the selected date
+        function loadEventsForSelectedDate() {
+            const eventTitleInput = document.getElementById('eventTitle');
+            const eventList = document.getElementById('eventList');
+
+            eventTitleInput.value = ''; // Clear the input
+
+            if (selectedDate && events[selectedDate]) {
+                const dateEvents = events[selectedDate];
+                eventList.innerHTML = dateEvents.map(event => `<li>${event}</li>`).join('');
+            } else {
+                eventList.innerHTML = '<li>No events for this date.</li>';
+            }
+
+            // Highlight selected day
+            document.querySelectorAll('.calendar .day').forEach(day => {
+                day.classList.remove('selected');
+                if (day.getAttribute('data-date') === selectedDate) {
+                    day.classList.add('selected');
+                }
+            });
+        }
+
+        // Add new event
+        document.getElementById('addEventButton').addEventListener('click', () => {
+            const eventTitle = document.getElementById('eventTitle').value;
+            if (selectedDate && eventTitle) {
+                if (!events[selectedDate]) {
+                    events[selectedDate] = [];
+                }
+                events[selectedDate].push(eventTitle);
+                localStorage.setItem('events', JSON.stringify(events));
+
+                loadEventsForSelectedDate();
+                displayCalendar();
+            } else {
+                alert("Please select a date and enter an event title.");
+            }
+        });
+
+        // Initialize the calendar
+        displayCalendar();
+    </script>
+
+</body>
+</html>
