@@ -59,11 +59,11 @@ header{
         position: fixed;
         top: 80px;
         right: -100%;
-        width: 250px;
+        width: 300px;
         height: 100vh;
         background: rgb(22, 22, 22);
         flex-direction: column;
-        align-items: start;
+        align-items: center;
         gap: 20px;
         padding: 12px 0;
         color: white;
@@ -169,8 +169,8 @@ nav a{
     border-radius: 10px;
     font-weight: 500;
     font-size: large;
-    margin: 10px;
-    transition: 0.5s;
+    margin: 8px;
+    transition: 0.4s;
 }
 
 nav a:hover{
@@ -208,6 +208,21 @@ nav a:hover{
         margin: 0;
         padding: 0 20px;
     }
+}
+#typing::after{
+    content: "|";
+    animation: blink 1s infinite;
+    color: blueviolet;
+}
+
+@keyframes blink{
+    50%{
+        opacity: 0;
+    }
+}
+.typing{ 
+    text-align: center;
+    margin-top: 29px;
 }
 .me{
     display: flex;
@@ -357,7 +372,7 @@ textarea{
 /* ================= FOOTER ================= */
 footer{
     text-align: center;
-    margin-top: 30px;
+    margin-top: 15px;
     font-weight: bold;
     height: 190px;
     background-color: #212121;
