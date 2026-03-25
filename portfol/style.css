@@ -244,7 +244,6 @@ nav a:hover{
     margin-top: 20px;
 }
 
-/* ================= SKILLS ================= */
 @media (max-width: 768px) {
     .my-skill{
         gap: 15px;
@@ -290,9 +289,7 @@ nav a:hover{
     font-weight: 600;
 }
 
-/* ================= CONTACT ================= */
 
-/* ================= FORM ================= */
 .contact-con{
     display: flex;
     gap: 40px;
@@ -369,7 +366,6 @@ textarea{
     transform: scale(1.1);
 }
 
-/* ================= FOOTER ================= */
 footer{
     text-align: center;
     margin-top: 15px;
@@ -530,22 +526,24 @@ h4{
     }
     .Reports{
       margin-top: 2rem;
-      align-content: center;
+      align-items: center;
       flex-direction: column;
       padding: 40px 20px;
       display: flex;
+      justify-content: center;
     }
     .report-slide{
       min-width: 100%;
     }
     .report-card{
-      padding: 5px;
-      max-width: 700px;
-      width: 90%;
-      background-color: #222222;
-      border-radius: 8px;
-      transition: 0.3s;
-    }
+  padding: 10px;
+  width: 95%;
+  max-width: 1000px;
+  margin: 0 auto; 
+  background-color: #202020;
+  border-radius: 8px;
+  transition: 0.3s;
+}
     .report-card:hover{
       background-color: #000000;
       transform: scale(0.99);
