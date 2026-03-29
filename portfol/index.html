@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Idowu Peter</title>
+<title>Peter Taiwo | Portfolio</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -24,6 +24,7 @@
         <a href="#skill">Skills</a>
         <a href="#Services">Services</a>
         <a href="#testimonial">Testimonials</a>
+        <a href="#faqs">FAQs
         <a href="#Contact">Contact</a>
         <a href="view.html" class="view">My Projects</a>
     </div>
@@ -128,13 +129,9 @@ like Node.js and Express. <br>I believe in writing clean, maintainable code and 
 <div class="report-slide">
   <div class="report-card">
     <div class="report-content">
-     <div class="report-rating">
-       <span><i class="ri-star-fill"></i></span>
-       <span><i class="ri-star-fill"></i></span>
-       <span><i class="ri-star-fill"></i></span>
-       <span><i class="ri-star-fill"></i></span>
-       <span><i class="ri-star-fill"></i></span>
-     </div>
+  <div class="rating-container">
+    <div class="stars">★★★★★</div>
+  </div>
      <p> I Feel excited seeing you with this improvement, I will like to connect more people
     with my Course mate. and i believe he dont disappoint.</p>
     </div>
@@ -153,13 +150,9 @@ like Node.js and Express. <br>I believe in writing clean, maintainable code and 
 <div class="report-slide">
   <div class="report-card">
     <div class="report-content">
-     <div class="report-rating">
-       <span><i class="ri-star-fill"></i></span>
-       <span><i class="ri-star-fill"></i></span>
-       <span><i class="ri-star-fill"></i></span>
-       <span><i class="ri-star-fill"></i></span>
-       <span><i class="ri-star-fill"></i></span>
-     </div>
+  <div class="rating-container">
+    <div class="stars">★★★★★</div>
+  </div>
      <p> I Feel excited doing businesses with this Company, I will like to connect more people
     with the company. and i believe they dont disappoint.</p>
     </div>
@@ -173,31 +166,33 @@ like Node.js and Express. <br>I believe in writing clean, maintainable code and 
 </div>
 </div>
 
-<div class="Reports">
-<div class="report">
-<div class="report-slide">
-  <div class="report-card">
-    <div class="report-content">
-     <div class="report-rating">
-       <span><i class="ri-star-fill"></i></span>
-       <span><i class="ri-star-fill"></i></span>
-       <span><i class="ri-star-fill"></i></span>
-       <span><i class="ri-star-fill"></i></span>
-       <span><i class="ri-star-fill"></i></span>
-     </div>
-     <p> I Feel excited doing businesses with this Company, I will like to connect more people
-    with the company. and i believe they dont disappoint.</p>
-    </div>
-    <div class="report-details">
-      <img src="my image/logo.png" alt="">
-      <h4> MR Olanrewaju</h4>
-      <h5>CEO of A & S Digital World</h5>
-    </div>
-  </div>
-</div>
-</div>
-</div>
 </section>
+
+
+<section id="faq">
+      <h4>FAQ</h4>
+      <p class="p4">Frequent Questions to Know Before Contacting Me</p>
+      <details>
+        <summary>Can you redesign an existing website?</summary>
+        <p>Yes — modern redesign, speed improvements, better SEO, and cleaner UI are common upgrades I deliver.</p>
+      </details>
+      <details>
+        <summary>How long will it take?</summary>
+        <p>Websites can take 1–2 weeks. E-commerce and systems can take 2–8 weeks depending on features.</p>
+      </details>
+      <details>
+        <summary>How much does a project cost?</summary>
+        <p>Pricing depends on scope. I’ll give a clear quote after understanding your requirements and timeline.</p>
+      </details>
+      <details>
+        <summary>Can you add Paystack / CBT / chat to my system?</summary>
+        <p>Yes — I can integrate Paystack payments and build CBT + auto grading + chat modules cleanly and securely.</p>
+      </details>
+      <details>
+        <summary>Do you offer maintenance?</summary>
+        <p>Yes. You can keep me on a monthly plan for updates, security, new features, and support.</p>
+      </details>
+    </section>
 
 
 <section>
@@ -240,9 +235,11 @@ like Node.js and Express. <br>I believe in writing clean, maintainable code and 
   </a>
 </div><br><br><br>
 
-        <p>&copy; 2025 | T TECH 001 | All Right Reserved</p>
+        <p>&copy; 2025 | PETER TAIWO | All Right Reserved</p>
     </footer>
+
 </section>
+
 
 <script>
    const hamburger = document.getElementById("hamburger");
@@ -306,6 +303,87 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
+
+
+  const starsContainer = document.getElementById('stars');
+  let currentRating = 5;
+
+  starsContainer.style.cursor = 'pointer';
+  
+  starsContainer.addEventListener('click', (e) => {
+    const rect = starsContainer.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+    const percent = clickX / rect.width;
+    currentRating = Math.ceil(percent * 5);
+    
+    // Fill stars
+    let filled = '★'.repeat(currentRating);
+    let empty = '☆'.repeat(5 - currentRating);
+    starsContainer.innerHTML = filled + empty;
+    starsContainer.style.color = '#ffd700';
+  });
+
+  // Hover preview
+  starsContainer.addEventListener('mousemove', (e) => {
+    const rect = starsContainer.getBoundingClientRect();
+    const hoverX = e.clientX - rect.left;
+    const hoverRating = Math.ceil((hoverX / rect.width) * 5);
+    
+    let filled = '★'.repeat(hoverRating);
+    let empty = '☆'.repeat(5 - hoverRating);
+    starsContainer.innerHTML = filled + empty;
+  });
+
+  starsContainer.addEventListener('mouseleave', () => {
+    // Restore selected rating
+    let filled = '★'.repeat(currentRating);
+    let empty = '☆'.repeat(5 - currentRating);
+    starsContainer.innerHTML = filled + empty;
+  });
+
+
+
+// ===== Back to Top Button =====
+const backToTop = document.createElement('button');
+backToTop.id = 'backToTop';
+backToTop.textContent = '↑';
+document.body.appendChild(backToTop);
+
+backToTop.style.position = 'fixed';
+backToTop.style.bottom = '20px';
+backToTop.style.right = '20px';
+backToTop.style.padding = '10px 15px';
+backToTop.style.background = '#00aaff';
+backToTop.style.color = '#fff';
+backToTop.style.border = 'none';
+backToTop.style.borderRadius = '5px';
+backToTop.style.cursor = 'pointer';
+backToTop.style.display = 'none';
+backToTop.style.zIndex = '1000';
+
+backToTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+
+window.addEventListener('scroll', () => {
+  if(window.scrollY > 300){
+    backToTop.style.display = 'block';
+  } else {
+    backToTop.style.display = 'none';
+  }
+});
+
 </script>
+
+
+  <button id="backToTop" style="position: fixed;
+     bottom: 20px; 
+    right: 20px;
+     padding: 10px 15px;
+     background: blueviolet; 
+    color: rgb(255, 255, 255); 
+    border: none;
+     border-radius: 5px;
+      cursor: pointer;
+    display: block;
+     z-index: 1000;">↑</button>
 </body>
 </html>

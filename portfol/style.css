@@ -59,16 +59,16 @@ header{
         position: fixed;
         top: 80px;
         right: -100%;
-        width: 300px;
+        width: 100%;
         height: 100vh;
         background: rgb(22, 22, 22);
         flex-direction: column;
         align-items: center;
-        gap: 20px;
+        gap: 15px;
         padding: 12px 0;
         color: white;
         display: flex;
-        transition: right 0.4s ease;
+        transition: right 0.6s ease;
       }
       .nav-link.active {
         right: 0;
@@ -90,6 +90,10 @@ header{
       nav {
         flex-direction: column;
         gap: 15px;
+      }
+
+      header{
+        height: 55px;
       }
     }
 
@@ -368,10 +372,11 @@ textarea{
 
 footer{
     text-align: center;
-    margin-top: 15px;
+    margin-top: 8px;
     font-weight: bold;
     height: 190px;
     background-color: #212121;
+    
 }
 footer p{
     color: white;
@@ -530,6 +535,7 @@ h4{
       flex-direction: column;
       padding: 40px 20px;
       display: flex;
+      height: auto;
       justify-content: center;
     }
     .report-slide{
@@ -543,21 +549,27 @@ h4{
   background-color: #202020;
   border-radius: 8px;
   transition: 0.3s;
-}
+    }
+
+    
+      
     .report-card:hover{
       background-color: #000000;
       transform: scale(0.99);
       box-shadow: 0 8px 16px rgb(47, 0, 91);
     }
     .report-content{
-      padding: 1rem;
-      background-color: #f4f6f8;
+      padding: 8px 8px;
+      
+      background-color: #ffffff;
+      margin: 0;
       border-radius: 5px;
     }
-    .report-rating{
-      margin-bottom: 1rem;
-      color: #000000;
-    }
+
+     .report-content p, .stars{
+        margin: 0;
+     }
+
     .report-details{
       padding: 1rem;
       display: flex;
@@ -576,4 +588,44 @@ h4{
     .report-card:hover h4{
       color: #ffffff;
     }
+  
     
+
+
+    .rating-container {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .stars {
+      font-size: 28px;
+      margin-top: 8px;
+      color: #ffd700; /* Gold/Yellow */
+      letter-spacing: 4px;
+    }
+
+
+
+#faq {
+    padding: 30px 20px;
+    background: #212121;
+    margin: 30px 0; 
+    }
+details {
+    background: #0e0e0e; padding: 15px;
+    border-radius: 8px; 
+    margin-bottom: 10px;
+    cursor: pointer; }
+summary {
+    font-weight: bold;
+    color: blueviolet; 
+    }
+details p {
+     color: #ccc;
+     margin-top: 5px;
+     }
+.p4{
+    color: white;
+    margin-bottom: 10px;
+}
